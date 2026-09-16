@@ -1,7 +1,7 @@
 module alu_4bit_tb;
 	reg [3:0] A;
 	reg [3:0] B;
-	reg [1:0] operation;
+	reg [2:0] operation;
 	wire [3:0] result;
 
 	alu_4bit uut (
@@ -15,20 +15,24 @@ module alu_4bit_tb;
 		A = 4'b1010;
 		B = 4'b1100;
 
-		operation = 2'b00;
+		operation = 3'b000;
 		#10;
 		$display("AND: result=%b", result);
 
-		operation = 2'b01;
+		operation = 3'b001;
 		#10;		$display("OR: result=%b", result);
 
-		operation = 2'b10;
+		operation = 3'b010;
 		#10;
 		$display("XOR: result=%b", result);
 
-		operation = 2'b11;
+		operation = 3'b011;
 		#10;
 		$display("ADD: result=%b", result);
+
+		operation = 3'b100;
+		#10;
+		$display("SUB: result=%b", result);
 
 		$display("and=%b or=%b xor=%b add=%b",
 			uut.and_result,
